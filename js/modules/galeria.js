@@ -11,6 +11,7 @@ export function initGaleria() {
   wrapper.appendChild(track);
   galeria.appendChild(wrapper);
 
+
   const total = 6;
   const originals = [];
   for (let i = 1; i <= total; i++) {
@@ -23,7 +24,9 @@ export function initGaleria() {
     originals.push(img);
   }
 
+ 
   originals.forEach(img => track.appendChild(img.cloneNode(true)));
+
 
   Promise.all(
     Array.from(track.querySelectorAll('img')).map(img => new Promise(res => {
@@ -34,8 +37,8 @@ export function initGaleria() {
       }
     }))
   ).then(() => {
-    let speed = 0.5;
-    let isPaused = false;
+    let speed = 0.5;      
+    let isPaused = false;  
 
     const loopMax = () => track.scrollWidth / 2;
 
@@ -47,7 +50,6 @@ export function initGaleria() {
       }
       requestAnimationFrame(step);
     }
-
     requestAnimationFrame(step);
 
     let isDragging = false;
@@ -58,18 +60,20 @@ export function initGaleria() {
 
     const getX = e => (e.touches ? e.touches[0].pageX : e.pageX);
 
+
     const startDrag = e => {
       isDragging = true;
-      isPaused = true; 
+      isPaused = true;
       startX = getX(e);
       startScrollLeft = track.scrollLeft;
       lastX = startX;
       velocity = 0;
     };
 
+
     const moveDrag = e => {
       if (!isDragging) return;
-      if (e.cancelable) e.preventDefault();
+      if (e.cancelable) e.preventDefault(); 
       const x = getX(e);
       const delta = startX - x;
       track.scrollLeft = startScrollLeft + delta;
@@ -82,16 +86,16 @@ export function initGaleria() {
       if (track.scrollLeft < 0) track.scrollLeft = max + track.scrollLeft;
     };
 
+   
     const endDrag = () => {
       if (!isDragging) return;
       isDragging = false;
 
-   
       let momentum = velocity * -1;
       const momentumStep = () => {
         if (Math.abs(momentum) > 0.1) {
           track.scrollLeft += momentum;
-          momentum *= 0.95; 
+          momentum *= 0.95;
           const max = loopMax();
           if (track.scrollLeft >= max) track.scrollLeft = 0;
           if (track.scrollLeft < 0) track.scrollLeft = max + track.scrollLeft;
@@ -102,6 +106,7 @@ export function initGaleria() {
       };
       requestAnimationFrame(momentumStep);
     };
+
 
     track.addEventListener('mousedown', startDrag);
     track.addEventListener('mousemove', moveDrag);

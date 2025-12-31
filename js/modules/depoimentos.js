@@ -11,9 +11,7 @@ export function initDepoimentos() {
     { texto: 'Com a musculação na Gym Fit ganhei massa muscular e melhorei minha postura no dia a dia.', autor: 'Marcos', detalhe: 'Aluno há 6 meses' }
   ];
 
-  let index = 0;
   const items = [];
-
 
   depoimentos.forEach(dep => {
     const div = document.createElement('div');
@@ -25,6 +23,27 @@ export function initDepoimentos() {
     wrapper.appendChild(div);
     items.push(div);
   });
+
+
+  if (window.innerWidth <= 414) {
+    wrapper.style.display = 'flex';
+    wrapper.style.overflowX = 'auto';
+    wrapper.style.scrollSnapType = 'x mandatory';
+    items.forEach(item => {
+      item.style.flex = '0 0 90%';
+      item.style.scrollSnapAlign = 'center';
+      item.style.position = 'static';
+      item.style.opacity = '1';
+      item.style.transform = 'none';
+      item.style.filter = 'none';
+    });
+    btnPrev?.remove();
+    btnNext?.remove();
+    return;
+  }
+
+
+  let index = 0;
 
   function applyClasses() {
     const len = items.length;
@@ -41,8 +60,6 @@ export function initDepoimentos() {
   }
 
   applyClasses();
-  requestAnimationFrame(() => applyClasses());
-
 
   function goPrev() {
     index = (index - 1 + items.length) % items.length;
@@ -56,7 +73,6 @@ export function initDepoimentos() {
 
   btnPrev?.addEventListener('click', goPrev);
   btnNext?.addEventListener('click', goNext);
-
 
   let timer = setInterval(goNext, 6000);
   wrapper.addEventListener('mouseenter', () => clearInterval(timer));
