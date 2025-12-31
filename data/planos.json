@@ -1,0 +1,17 @@
+[
+  {
+    "nome": "BASIC",
+    "beneficios": ["Acesso total", "Sem fidelidade", "Sem taxa de matrícula","Avaliação:R$60,00"],
+    "preco": 149.90
+  },
+  {
+    "nome": "PLUS",
+    "beneficios": ["Acesso total", "Leve amigos (até 2 amigos)", "fidelidade de 6 meses"],
+    "preco": 119.90
+  },
+  {
+    "nome": "PREMIUM",
+    "beneficios": ["Acesso total", "Sem taxa de matrícula", "Avaliações inclusas", "Leve amigos (até 5 amigos)", "Fidelidade de 12 meses"],
+    "preco": 109.90
+  }
+]

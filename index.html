@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academia Gym Fit</title>
+  <link rel="stylesheet" href="style/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav>
+      <h1>Gym Fit</h1>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#planos">Planos</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#localizacao">Localização</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>Aula experimental gratuita</h1>
+        <p>Descubra o poder do movimento com a Gym Fit.</p>
+        <button id="btn-agendar">Agendar agora</button>
+      </div>
+    </section>
+
+    <section id="sobre" class="reveal">
+      <h2>Sobre a Gym Fit</h2>
+      <p>Nossa estrutura moderna e equipe altamente qualificada criam um ambiente que inspira disciplina, foco e superação. Aqui, cada detalhe foi projetado para que você se sinta motivado a ir além, seja na musculação, nas aulas coletivas ou nos programas personalizados.</p>
+      <p>Treinar na Gym Fit é viver uma experiência única: energia contagiante, tecnologia de ponta e resultados reais. Não oferecemos apenas exercícios, oferecemos uma jornada de transformação que começa no corpo e se expande para a mente.</p>
+      <p>Se você busca mais do que uma academia, se busca inspiração diária para alcançar sua melhor versão, a Gym Fit é o seu lugar.</p>
+    </section>
+
+    <section id="planos" class="reveal">
+      <h2>Planos</h2>
+      <div class="planos-container"></div>
+    </section>
+
+    <section id="galeria" class="reveal">
+      <h2>Galeria</h2>
+      <div class="galeria-container"></div>
+    </section>
+  </main>
+
+<section id="depoimentos" class="reveal">
+  <h2>Depoimentos</h2>
+  <div class="depoimentos">
+    <button class="btn-prev">‹</button>
+    <div class="depoimentos-wrapper">
+    </div>
+    <button class="btn-next">›</button>
+  </div>
+</section>
+
+
+  <section id="localizacao" class="reveal"></section>
+
+  <footer>
+    <p>Siga-nos nas redes sociais: 
+      <a href="#">Instagram</a> | <a href="#">WhatsApp</a>
+    </p>
+    <p>© 2025 Gym Fit. Todos os direitos reservados.</p>
+  </footer>
+
+  <script type="module">
+    import { initAgendamento } from './js/modules/agendamento.js';
+    import { initPlanos } from './js/modules/planos.js';
+    import { initDepoimentos } from './js/modules/depoimentos.js';
+    import { initScrollReveal } from './js/modules/scrollReveal.js';
+    import { initContato } from './js/modules/contato.js';
+    import { initGaleria } from './js/modules/galeria.js';
+    import { initLocalizacao } from './js/modules/localizacao.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initAgendamento();
+      initPlanos();
+      initDepoimentos();
+      initScrollReveal();
+      initContato();
+      initGaleria();
+      initLocalizacao();
+    });
+  </script>
+</body>
+</html>
